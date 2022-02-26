@@ -133,7 +133,7 @@ table {
 
 /* Standard Classes */
 a {
-    color: #88862f;
+    color: #966305;
     text-decoration: none;
 }
 
@@ -147,14 +147,14 @@ h1 {
 h2 {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 500;
-    font-size: 1.5em;
+    font-size: 1.3em;
     padding: 0.3em;
 }
 
 h3 {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 0.3em;
 }
 
@@ -171,41 +171,58 @@ body {
     font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
         "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
-    font-size: 1.5em;
     position: relative;
+    font-size: 1.3em;
     z-index: 0;
+    background-color: rgb(252, 248, 248);
 }
 
 header {
     color: whitesmoke;
     height: 1.5em;
-    background-color: black;
+    background-color: rgb(15, 15, 15);
+    border-bottom: 2px solid #966305;
 }
 
 main {
     height: 200vh;
-    padding: 1em 1em 1em 9em;
-}
-
-.side-menu {
-    position: fixed;
-    z-index: 1;
-    top: 4em;
-    left: 1em;
-    background-color: rgba(235, 235, 235, 0.849);
-    overflow-x: hidden;
+    padding: 2em 1em 1em 12em;
 }
 
 /* Side Menu */
+#side-menu {
+    position: fixed;
+    z-index: 1;
+    top: 5em;
+    left: 3em;
+    overflow-x: hidden;
+}
 
-.side-menu ul li {
+#side-menu ul li {
     width: 6em;
     padding: 0.7em;
 }
 
-.side-menu ul a {
+#side-menu ul a {
     width: 10em;
     cursor: pointer;
+}
+#side-menu ul li:hover {
+    background-color: burlywood;
+}
+
+/* HEADER */
+.bar {
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    margin: 5px 0;
+    background-color: whitesmoke;
+}
+
+#menu-opener {
+    display: none;
+    padding: 0.2em 1.2em;
 }
 
 /* Buttons */
@@ -217,17 +234,26 @@ main {
 @media (max-width: 700px) {
     /* fall behind menu on mobile */
     main {
-        padding: 0.5em;
+        padding: 1.2em;
     }
 
     /* hide menu */
-    .side-menu ul li {
+    #side-menu ul li {
         width: 10em;
         padding: 0.7em;
     }
-    .side-menu {
+    #side-menu {
         top: 2em;
-        /* width: 0; */
-        transition: height 2s;
+        left: 1em;
+        width: 0;
+        background-color: rgba(235, 235, 235, 0.918);
+        box-shadow: 5px 15px 30px gainsboro;
+    }
+
+    .open {
+        width: auto !important;
+    }
+    #menu-opener {
+        display: block;
     }
 }
