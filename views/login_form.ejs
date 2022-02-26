@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include("./partials/head") %>
+    </head>
+    <body>
+        <%- include("./partials/header") %> <%- include("./partials/menu") %>
+        <main>
+            <div class="form">
+                <h1><%= title %></h1>
+                <p>Please log in to see messages in this forum.</p>
+                <form action="" method="POST">
+                    <label for="username">Username:</label>
+                    <br />
+                    <input type="text" name="username" />
+                    <br />
+                    <label for="password">Password:</label>
+                    <br />
+                    <input type="password" name="password" />
+                    <br />
+                    <button class="btn btn-primary" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </main>
+        <%- include("./partials/footer") %>
+    </body>
+</html>

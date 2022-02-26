@@ -6,7 +6,7 @@
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
-            <div class="form">
+            <div class="message-form">
                 <h1><%= title %></h1>
 
                 <p>
@@ -14,18 +14,14 @@
                     this forum.
                 </p>
                 <form action="" method="POST">
-                    <label for="username">Username:</label>
+                    <label for="title">Title:</label>
                     <br />
-                    <input type="text" name="username" />
+                    <input type="text" name="title" />
                     <br />
-                    <label for="password">Password:</label>
+                    <label for="password">Body:</label>
                     <br />
-                    <input type="password" name="password" />
-                    <br />
-                    <label for="password-reenter">Reenter Password:</label>
-                    <br />
-                    <input type="password" name="password-reenter" />
-                    <br />
+                    <textarea col="200" rows="10" name="message"></textarea>
+
                     <button class="btn btn-primary" type="submit">
                         Submit
                     </button>

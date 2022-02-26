@@ -149,6 +149,7 @@ h2 {
     font-weight: 500;
     font-size: 1.3em;
     padding: 0.3em;
+    margin: auto;
 }
 
 h3 {
@@ -156,6 +157,7 @@ h3 {
     font-weight: 500;
     font-size: 1em;
     padding: 0.3em;
+    margin: auto;
 }
 
 p {
@@ -175,6 +177,7 @@ body {
     font-size: 1.3em;
     z-index: 0;
     background-color: rgb(252, 248, 248);
+    color: rgb(20, 20, 20);
 }
 
 header {
@@ -185,7 +188,7 @@ header {
 }
 
 main {
-    height: 200vh;
+    height: 110vh;
     padding: 2em 1em 1em 12em;
 }
 
@@ -225,9 +228,111 @@ main {
     padding: 0.2em 1.2em;
 }
 
+/* Messages */
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 40em;
+    margin: 2em auto 4em 0;
+}
+
+.message,
+.comment {
+    max-width: 30em;
+    margin: 0.5em auto;
+    padding: 1em;
+    border: 1px solid #4d1f9791;
+    border-radius: 10px;
+    box-shadow: 5px 15px 30px gainsboro;
+}
+
 /* Buttons */
+.btn {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    color: #966305;
+    padding: 0.3em;
+    border: 1px solid rgb(126, 122, 119);
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #f3b136;
+    color: black;
+}
 
 /* Forms */
+.form {
+    padding: 1em;
+    margin: 1em;
+    background-color: rgba(250, 248, 248, 0.918);
+    box-shadow: 5px 15px 30px rgb(212, 208, 208);
+    max-width: 12em;
+}
+
+.form h1,
+.form p,
+.message-form h1,
+.message-form p {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+form {
+    padding-left: 1em;
+    margin: auto;
+}
+
+label {
+    padding: 0.5em;
+    margin: 5px auto;
+}
+input[type="text"],
+input[type="password"] {
+    height: 1.4em;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    padding: 0.2em;
+    border-radius: 5px;
+    width: 14em;
+    margin-bottom: 1em;
+
+    border: 1px solid whitesmoke;
+    box-shadow: 1px 1px 1px rgb(212, 208, 208);
+}
+
+.message-form {
+    padding: 1em;
+    margin: 1em;
+    background-color: rgba(250, 248, 248, 0.918);
+    box-shadow: 5px 15px 30px rgb(212, 208, 208);
+    max-width: 20em;
+}
+
+.message-form textarea {
+    width: 90%;
+    font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
+        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    max-width: 28em;
+}
+
+.comment-form {
+    margin: 4em 1em;
+    padding: 0.5em;
+
+    background-color: rgba(250, 248, 248, 0.918);
+    box-shadow: 5px 15px 30px rgb(212, 208, 208);
+}
+.comment-form textarea {
+    width: 95%;
+}
+
+.comment-form h3 {
+    padding-bottom: 1em;
+}
 
 /*  */
 
