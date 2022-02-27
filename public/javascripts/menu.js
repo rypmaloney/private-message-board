@@ -27,4 +27,6 @@ function menuController() {
     console.log("working");
 }
 
+function likeController() {}
+
 menuController();

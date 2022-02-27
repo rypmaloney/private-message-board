@@ -1,4 +1,5 @@
 let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
 const Message = mongoose.model(
     "Message",

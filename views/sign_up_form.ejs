@@ -7,7 +7,7 @@
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
             <div class="form">
-                <h1><%= title %></h1>
+                <h2><%= title %></h2>
 
                 <p>
                     Create an account in order to sign up and see messages in
@@ -30,6 +30,12 @@
                         Submit
                     </button>
                 </form>
+                <ul>
+                    <% if(errors) { %> <% for (var i = 0; i < errors.length;
+                    i++) { %>
+                    <li class="error"><%= errors[i].msg %></li>
+                    <%console.log(errors)%> <%}}%>
+                </ul>
             </div>
         </main>
         <%- include("./partials/footer") %>
