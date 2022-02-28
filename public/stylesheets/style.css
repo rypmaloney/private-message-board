@@ -168,12 +168,6 @@ p {
     padding: 0.3em;
 }
 
-.error {
-    font-size: 0.7em;
-    color: red;
-    padding: 0.2em 1.3em;
-}
-
 /* Document Sections */
 body {
     font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
@@ -210,6 +204,24 @@ main {
 #side-menu ul li {
     width: 6em;
     padding: 0.7em;
+}
+
+.side-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: serif;
+    font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
+        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    padding-left: 0;
+}
+.side-menu-btn:focus {
+    outline: none;
+}
+.side-menu-btn:active {
+    color: red;
 }
 
 #side-menu ul a {
@@ -311,6 +323,9 @@ form {
 
 label {
     padding: 0.5em;
+    font-size: 0.6em;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
     margin: 5px auto;
 }
 input[type="text"],
@@ -358,6 +373,12 @@ textarea {
 
 .comment-form h3 {
     padding-bottom: 1em;
+}
+
+.error {
+    font-size: 0.7em;
+    color: red;
+    padding: 0.2em 1.3em;
 }
 
 /*  */

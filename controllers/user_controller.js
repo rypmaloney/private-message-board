@@ -6,7 +6,7 @@ var async = require("async");
 const { body, validationResult } = require("express-validator");
 
 //models
-let User = require("../models/user");
+let User = require("../models/User");
 let Message = require("../models/Message");
 
 //POST function for creating a new user- hashes password then saves user
@@ -15,7 +15,7 @@ exports.create_user = [
     body("username", "Username must not be empty.")
         .isLength({ min: 1 })
         .escape(),
-    body("password", "password must not be empty.")
+    body("password", "Password must not be empty.")
         .isLength({ min: 1 })
         .escape(),
     body("password-reenter", "Please reenter you're password ")
@@ -26,7 +26,7 @@ exports.create_user = [
             // If password and confirm password not same
             // don't allow to sign up and throw error
             if (password !== confirmPassword) {
-                throw new Error("Passwords must be same");
+                throw new Error("Passwords must match.");
             }
         })
         .escape(),
@@ -62,3 +62,13 @@ exports.create_user = [
         }
     },
 ];
+
+exports.login_user = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+});
+
+exports.log_out = (req, res, next) => {
+    req.logout();
+    res.redirect("/");
+};

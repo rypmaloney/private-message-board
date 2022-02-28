@@ -4,7 +4,11 @@ let user_controller = require("../controllers/user_controller");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-    res.render("index", { title: "Private Forum" });
+    console.log(res.user);
+    res.render("index", {
+        title: "Private Forum",
+        // currentUser: req.user,
+    });
 });
 //GET log in page
 router.get("/log-in/", function (req, res, next) {
@@ -18,5 +22,11 @@ router.get("/sign-up/", function (req, res, next) {
 
 //POST new user
 router.post("/sign-up/", user_controller.create_user);
+
+//POST login user
+router.post("/log-in/", user_controller.login_user);
+
+//POST new user
+router.post("/log-out/", user_controller.log_out);
 
 module.exports = router;

@@ -4,11 +4,13 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+//models
+let User = require("./models/User");
+
 var mongoose = require("mongoose");
 require("dotenv").config();
 
 //authenitcation packages
-
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -25,12 +27,6 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-//Set up Passport
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
-
 //MongoDB connection
 const mongoDb = `${process.env.DB_URI}`;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -43,52 +39,38 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-//PASSPORT Middleware
+//Set up local strategy
 passport.use(
     new LocalStrategy((username, password, done) => {
         User.findOne({ username: username }, (err, user) => {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
+            if (err) return done(err);
+            if (!user)
                 return done(null, false, { message: "Incorrect username" });
-            }
-            if (user.password !== password) {
-                //use bycrpt to compare hashed password
-                bcryptjs.compare(password, user.password, (err, res) => {
-                    if (res) {
-                        // passwords match! log user in
-                        return done(null, user);
-                    } else {
-                        // passwords do not match!
-                        return done(null, false, {
-                            message: "Incorrect password",
-                        });
-                    }
-                });
-            }
-            return done(null, user);
+            bcryptjs.compare(password, user.password, (err, res) => {
+                if (err) return done(err);
+                // Passwords match, log user in!
+                if (res) return done(null, user);
+                // Passwords do not match!
+                else
+                    return done(null, false, { message: "Incorrect password" });
+            });
         });
     })
 );
 
-//Creates and checks for cookie in User in database
-passport.serializeUser(function (user, done) {
-    done(null, user.id);
-});
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser((id, done) =>
+    User.findById(id, (err, user) => done(err, user))
+);
 
-passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
-        done(err, user);
-    });
-});
+// Secret value should be a process env value
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
-//Custom middleware. Creates variable on "locals object". Sets it to current user.
-//IF you set this middleware between here you will ahve access to the variable "currentUser in all views"
-//where you instantiate passport middlware
-//and
-//before you render views
-app.use(function (req, res, next) {
+// Access the user object from anywhere in our application
+app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
 });
