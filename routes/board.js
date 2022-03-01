@@ -12,6 +12,8 @@ router.get("/message/new/", function (req, res, next) {
 //Get specific message
 router.get("/message/:id/", message_controller.message_detail);
 
+router.post("/message/:id/", message_controller.comment_create_post);
+
 router.post("/message/new/", message_controller.message_create_post);
 
 module.exports = router;

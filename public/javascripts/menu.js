@@ -23,8 +23,6 @@ function menuController() {
             menuItem.classList.toggle("open");
         }
     })();
-
-    console.log("working");
 }
 
 function likeController() {}

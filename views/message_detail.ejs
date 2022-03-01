@@ -39,18 +39,20 @@
                 <div class="comment-form">
                     <h3>New Comment</h3>
                     <form action="" method="POST">
-                        <label for="title">Title:</label>
+                        <label for="comment">Comment:</label>
                         <br />
-                        <input type="text" name="title" />
-                        <br />
-                        <label for="password">Body:</label>
-                        <br />
-                        <textarea col="200" rows="10" name="message"></textarea>
+                        <textarea col="200" rows="10" name="comment"></textarea>
 
                         <button class="btn btn-primary" type="submit">
                             Submit
                         </button>
                     </form>
+                    <ul>
+                        <% if(errors) { %> <% for (var i = 0; i < errors.length;
+                        i++) { %>
+                        <li class="error"><%= errors[i].msg %></li>
+                        <%console.log(errors)%> <%}}%>
+                    </ul>
                 </div>
             </div>
             <p>Welcome to <%= title %></p>
