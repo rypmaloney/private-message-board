@@ -181,6 +181,9 @@ body {
 }
 
 header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     color: whitesmoke;
     height: 1.5em;
     background-color: rgb(20, 12, 59);
@@ -188,8 +191,20 @@ header {
 }
 
 main {
-    height: 110vh;
-    padding: 2em 1em 1em 12em;
+    /* height: 110vh; */
+    padding: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Profile */
+#profile {
+    position: fixed;
+    top: 1.7em;
+    right: 1em;
+    background-color: rgba(230, 224, 224, 0.438);
 }
 
 /* Side Menu */
@@ -252,7 +267,12 @@ main {
     flex-direction: column;
     justify-content: center;
     max-width: 40em;
-    margin: 2em auto 4em 0;
+    margin: 2em auto 4em 12em;
+}
+
+.message-detail {
+    max-width: 40em;
+    margin: 1em auto 1em 12em;
 }
 
 .message,
@@ -389,6 +409,10 @@ textarea {
         padding: 1.2em;
     }
 
+    header {
+        justify-content: space-between;
+    }
+
     /* hide menu */
     #side-menu ul li {
         width: 10em;
@@ -407,5 +431,9 @@ textarea {
     }
     #menu-opener {
         display: block;
+    }
+    .messages,
+    .message-detail {
+        margin: auto;
     }
 }

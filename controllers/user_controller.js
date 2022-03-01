@@ -65,7 +65,7 @@ exports.create_user = [
 
 exports.login_user = passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/log-in/",
 });
 
 exports.log_out = (req, res, next) => {

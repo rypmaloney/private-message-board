@@ -6,42 +6,32 @@
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
-            <h1><%= title %></h1>
-
             <div class="messages">
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message. The body of a message.
-                        The body of a message. The body of a message.The body of
-                        a message.
-                    </p>
-                    <div class="like-info">
-                        <button class="btn like-btn" id="like-like">
-                            &#9825;
-                        </button>
-                        <p id="like-number">4</p>
-                    </div>
-                </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
+                <h1><%= title %></h1>
+                <% if(!currentUser) { %>
+                <p>This board has restricted access</p>
+                <p>
+                    Please <a href="/log-in/">log in</a> to view and post on the
+                    message board.
+                </p>
+                <% } else{%>
+                    
+                    <% for(var i=0; i<list_message.length; i++) {%>
+                        <div class="message">
+                            <h3> <%= list_message[i].title %></h3>
+                            
+                            <p> <%= list_message[i].body_text %></p>
+                            <p> Posted by <%= list_message[i].user.username %> at <%= list_message[i].date %></p>
+
+                            <div class="like-info">
+                                <button class="btn like-btn" id="like-like">
+                                    &#9825;
+                                </button>
+                                <p id="like-number">4</p>
+                            </div>
+                        </div>
+                <% } %>
+
                 <div class="message">
                     <h3>A message title</h3>
                     <p>
@@ -51,15 +41,8 @@
                         body of a message.
                     </p>
                 </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
+
+                <%}%>
             </div>
         </main>
         <%- include("./partials/footer") %>

@@ -1,13 +1,16 @@
 <div id="side-menu">
     <ul>
+        <% if(currentUser){ %>
         <a href="/"><li>Home</li></a>
         <a href="/board/"><li>Board</li></a>
+        <a href="/board/message/new"><li>New post</li></a>
+        <a href="/"><li>Your Posts</li></a>
+
+        <% }else{%>
+
         <a href="/sign-up/"><li>Sign Up</li></a>
         <a href="/log-in/"><li>Log In</li></a>
-        <li>
-            <form method="POST" action="/log-out/">
-                <button class="side-menu-btn" type="submit">logout</button>
-            </form>
-        </li>
+
+        <%}%>
     </ul>
 </div>
