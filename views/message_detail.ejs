@@ -9,11 +9,13 @@
             <div class="message-detail">
                 <h1><%= title %></h1>
 
+                <p><%= message.body_text %></p>
+
                 <p>
-                    The body of a message. The body of a message.The body of a
-                    message.The body of a message. The body of a message. The
-                    body of a message. The body of a message.The body of a
-                    message.
+                    <em>
+                        Posted by <%= message.user.username %> on <%=
+                        message.prettyDate %>
+                    </em>
                 </p>
             </div>
             <div class="messages">

@@ -17,7 +17,7 @@ exports.message_list = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            console.log(message_list);
+
             //Successful, so render
             res.render("message_board", {
                 title: "Private Forum",
@@ -70,3 +70,19 @@ exports.message_create_post = [
         }
     },
 ];
+
+//GET function to display specific post
+exports.message_detail = function (req, res, next) {
+    Message.findById(req.params.id)
+        .populate("user")
+        .exec(function (err, message) {
+            if (err) {
+                return next(err);
+            }
+            //Successful, so render
+            res.render("message_detail", {
+                title: message.title,
+                message: message,
+            });
+        });
+};
