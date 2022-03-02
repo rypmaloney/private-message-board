@@ -67,11 +67,10 @@ exports.comment_list = function (req, res, next) {
 //POST Function for new message
 exports.message_create_post = [
     // Validate and sanitize fields.
-    body("title", "Title must not be empty.").isLength({ min: 1 }).escape(),
+    body("title", "Title must not be empty.").isLength({ min: 1 }),
     body("body", "The actually post is required, buddy")
         .trim()
-        .isLength({ min: 1 })
-        .escape(),
+        .isLength({ min: 1 }),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -112,8 +111,7 @@ exports.comment_create_post = [
     // Validate and sanitize fields.
     body("comment", "The actually post is required, buddy")
         .trim()
-        .isLength({ min: 1 })
-        .escape(),
+        .isLength({ min: 1 }),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -176,7 +174,7 @@ exports.message_detail = function (req, res, next) {
 //GET function for all messsages by a given user
 exports.user_list = function (req, res, next) {
     Message.find({ user: req.user }, "title body_text user likes")
-        .sort("likes", 1)
+        .sort({ likes: -1 })
         .populate("user")
         .exec(function (err, message_list) {
             if (err) {

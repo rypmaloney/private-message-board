@@ -6,7 +6,10 @@ const message_controller = require("../controllers/message_controller");
 router.get("/", message_controller.message_list);
 
 router.get("/message/new/", function (req, res, next) {
-    res.render("new_message", { title: "New Message", errors: false });
+    res.render("new_message", {
+        title: "New Message",
+        errors: false,
+    });
 });
 
 router.post("/message/like/:id", message_controller.like_increment);

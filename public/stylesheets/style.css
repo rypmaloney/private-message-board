@@ -276,24 +276,58 @@ main {
 
 .message-detail {
     max-width: 40em;
-    margin: 1em auto 1em 12em;
+    margin: 1em auto 0.3em 12em;
 }
 
 .message,
 .comment {
+    display: flex;
+    flex-direction: row;
     max-width: 40em;
-
-    margin: 0.5em;
     padding: 1em;
+}
+
+.comment {
     border: 1px solid #1f4f9791;
-    border-radius: 10px;
     box-shadow: 5px 15px 30px gainsboro;
+    margin: 0.3em;
+}
+
+.message-content {
+    border: 1px solid #1f4f9791;
+    box-shadow: 5px 15px 30px gainsboro;
+    padding: 1em;
+    min-width: 80%;
+}
+
+.vote-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vote-content {
+    text-align: center;
+    border: 1px solid #1f4f973a;
+    box-shadow: 3px 5px 10px gainsboro;
+}
+
+.upvote-btn {
+    border: solid black;
+    background-color: transparent;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 8px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    cursor: pointer;
 }
 
 .upvote-info {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    padding: 1em;
 }
 .upvote-info p {
     font-size: 0.7em;
@@ -318,11 +352,20 @@ main {
 }
 
 .upvote-btn:hover {
-    color: rgb(56, 221, 78);
+    border: solid rgb(56, 221, 78);
+    border-width: 0 4px 4px 0;
+}
+
+.upvote-btn:active {
+    padding: 12px;
+    border: solid rgb(56, 221, 78);
+    border-width: 0 4px 4px 0;
 }
 
 .upvoted {
     background-color: rgb(39, 160, 49);
+    border: solid rgb(56, 221, 78);
+    border-width: 0 4px 4px 0;
 }
 
 /* Forms */
@@ -363,7 +406,7 @@ input[type="password"],
 textarea {
     padding: 0.2em;
     border-radius: 5px;
-    width: 14em;
+    width: 15em;
     margin-bottom: 1em;
 
     border: 1px solid whitesmoke;
@@ -375,14 +418,16 @@ textarea {
     margin: 1em;
     background-color: rgba(250, 248, 248, 0.918);
     box-shadow: 5px 15px 30px rgb(212, 208, 208);
-    max-width: 20em;
+    width: 53%;
+    max-width: 40em;
 }
-
+.message-form input[type="text"] {
+    width: 60%;
+}
 .message-form textarea {
-    width: 90%;
+    width: 95%;
     font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
         "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    max-width: 28em;
 }
 
 .comment-form {
@@ -440,5 +485,8 @@ textarea {
     .messages,
     .message-detail {
         margin: auto;
+    }
+    .message {
+        flex-direction: column;
     }
 }
