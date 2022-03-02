@@ -10,7 +10,10 @@ router.get("/message/new/", function (req, res, next) {
 });
 
 //Get specific message
-router.get("/message/:id/", message_controller.message_detail);
+router.get("/message/user/", message_controller.user_list);
+
+//Get specific message
+router.get("/message/:id/", message_controller.comment_list);
 
 router.post("/message/:id/", message_controller.comment_create_post);
 

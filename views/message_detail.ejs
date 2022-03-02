@@ -6,35 +6,49 @@
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
-            <div class="message-detail">
-                <h1><%= title %></h1>
-
-                <p><%= message.body_text %></p>
-
+                <!--  -->
+                <% if(!currentUser) { %>
+                <p>This post has restricted access</p>
                 <p>
-                    <em>
-                        Posted by <%= message.user.username %> on <%=
-                        message.prettyDate %>
-                    </em>
+                    Please <a href="/log-in/">log in</a> to view and post on the
+                    message board.
                 </p>
-            </div>
-            <div class="messages">
-                <h2>Comments</h2>
-                <div class="comment">
-                    <h3>A coment title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a f a message. The body of a message. The body of a
-                        message. The body of a message.The body of a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A comment title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        essage.The body of a message.The body of a message.
-                    </p>
-                </div>
+                <% } else{%>
+                     <div class="message-detail">
+                        <h1><%= title %></h1>
+                        <p><%= message.body_text %></p>
+
+                        <p>
+                            <em>
+                                Posted by <%= message.user.username %> on <%=
+                                message.prettyDate %>
+                            </em>
+                        </p>
+                     </div>
+                     <% if(comment_list==null) { %>
+                        <p>There are no comments. Start the conversation.</p>
+                     <% } else{%>
+                    <div class="messages">
+                    <% for(var i=0; i<comment_list.length; i++) {%>
+                        <div class="comment">
+                            
+                            <p> <%= comment_list[i].body_text %></p>
+                            <p><em> Posted by <%= comment_list[i].user.username %>  </em></p>
+                            <div class="like-info">
+                                <button class="btn like-btn" id="like-like">
+                                    &#9825;
+                                </button>
+                                <p id="like-number">4</p>
+                            </div>
+
+                        </div>
+                        <% } %>
+                        
+                    <% } %>
+                <% } %>
+
+                <!--  -->
+
 
                 <div class="comment-form">
                     <h3>New Comment</h3>
@@ -53,6 +67,7 @@
                         <li class="error"><%= errors[i].msg %></li>
                         <%console.log(errors)%> <%}}%>
                     </ul>
+                </div>
                 </div>
             </div>
             <p>Welcome to <%= title %></p>

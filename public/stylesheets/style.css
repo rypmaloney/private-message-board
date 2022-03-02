@@ -190,7 +190,7 @@ header {
     justify-content: flex-end;
     color: whitesmoke;
     height: 1.5em;
-    background-color: rgb(20, 12, 59);
+    background-color: #063985f6;
     border-bottom: 2px solid #966305;
 }
 
@@ -270,7 +270,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 40em;
+    max-width: 50em;
     margin: 2em auto 4em 12em;
 }
 
@@ -281,8 +281,9 @@ main {
 
 .message,
 .comment {
-    max-width: 30em;
-    margin: 0.5em auto;
+    max-width: 40em;
+
+    margin: 0.5em;
     padding: 1em;
     border: 1px solid #1f4f9791;
     border-radius: 10px;

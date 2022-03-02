@@ -29,23 +29,38 @@ exports.message_list = function (req, res, next) {
 };
 
 /////////////////////////////
-//GET Function for all comments
-exports.message_list = function (req, res, next) {
-    Message.findOne({ parent: req.param.id }, "body_text user")
-        .populate("user")
-        .exec(function (err, message_list) {
+//GET Function for all comments for a given post
+exports.comment_list = function (req, res, next) {
+    async.parallel(
+        {
+            comments: function (callback) {
+                Comment.find({ parent: req.params.id })
+                    .populate("user")
+                    .exec(callback);
+            },
+            message: function (callback) {
+                Message.findById(req.params.id).populate("user").exec(callback);
+            },
+        },
+        function (err, results) {
+            console.log(results.message);
             if (err) {
                 return next(err);
             }
-
-            ///MAKE ARRAY AND FIND THE CORRECT MESSAGE HERE///
-
-            //Successful, so render
+            if (results.message == null) {
+                // No results.
+                var err = new Error("There is no post");
+                err.status = 404;
+                return next(err);
+            }
             res.render("message_detail", {
-                title: "Private Forum",
-                list_message: message_list,
+                title: results.message.title,
+                comment_list: results.comments,
+                message: results.message,
+                errors: false,
             });
-        });
+        }
+    );
 };
 ///////////////////////////////
 
@@ -153,6 +168,26 @@ exports.message_detail = function (req, res, next) {
                 title: message.title,
                 message: message,
                 errors: false,
+            });
+        });
+};
+
+//GET function for all messsages by a given user
+
+//GET Function for all messages
+exports.user_list = function (req, res, next) {
+    Message.find({ user: req.user }, "title body_text user")
+        .sort({ title: 1 })
+        .populate("user")
+        .exec(function (err, message_list) {
+            if (err) {
+                return next(err);
+            }
+            let user = req.user;
+            //Successful, so render
+            res.render("message_board", {
+                title: `Posts by ${user.username}`,
+                list_message: message_list,
             });
         });
 };
