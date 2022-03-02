@@ -12,8 +12,8 @@ const { isValidObjectId } = require("mongoose");
 
 //GET Function for all messages
 exports.message_list = function (req, res, next) {
-    Message.find({}, "title body_text user")
-        .sort({ title: 1 })
+    Message.find({}, "title body_text user _id likes")
+        .sort({ likes: -1 })
         .populate("user")
         .exec(function (err, message_list) {
             if (err) {
@@ -84,6 +84,7 @@ exports.message_create_post = [
             body_text: req.body.body,
             date: new Date(),
             user: req.user,
+            likes: 0,
         });
 
         if (!errors.isEmpty()) {
@@ -173,11 +174,9 @@ exports.message_detail = function (req, res, next) {
 };
 
 //GET function for all messsages by a given user
-
-//GET Function for all messages
 exports.user_list = function (req, res, next) {
-    Message.find({ user: req.user }, "title body_text user")
-        .sort({ title: 1 })
+    Message.find({ user: req.user }, "title body_text user likes")
+        .sort("likes", 1)
         .populate("user")
         .exec(function (err, message_list) {
             if (err) {
@@ -190,4 +189,14 @@ exports.user_list = function (req, res, next) {
                 list_message: message_list,
             });
         });
+};
+
+exports.like_increment = function (req, res, next) {
+    Message.updateOne(
+        { _id: req.params.id },
+        { $inc: { likes: 1 } },
+        function (err, resp) {
+            console.log(err);
+        }
+    );
 };

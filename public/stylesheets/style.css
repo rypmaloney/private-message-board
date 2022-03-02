@@ -290,12 +290,12 @@ main {
     box-shadow: 5px 15px 30px gainsboro;
 }
 
-.like-info {
+.upvote-info {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
-.like-info p {
+.upvote-info p {
     font-size: 0.7em;
 }
 
@@ -317,12 +317,12 @@ main {
     color: black;
 }
 
-.like-btn:hover {
-    color: rgb(207, 32, 32);
+.upvote-btn:hover {
+    color: rgb(56, 221, 78);
 }
 
-.liked {
-    background-color: rgba(202, 105, 105, 0.452);
+.upvoted {
+    background-color: rgb(39, 160, 49);
 }
 
 /* Forms */

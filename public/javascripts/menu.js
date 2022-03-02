@@ -25,6 +25,4 @@ function menuController() {
     })();
 }
 
-function likeController() {}
-
 menuController();

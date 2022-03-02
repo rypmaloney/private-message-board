@@ -23,11 +23,11 @@
                             <p> <%= list_message[i].body_text %></p>
                             <p><em> Posted by <%= list_message[i].user.username %>  </em></p>
                             <p><a href="<%= list_message[i].url%>">More info</a></p>
-                            <div class="like-info">
-                                <button class="btn like-btn" id="like-like">
-                                    &#9825;
+                            <div class="upvote-info">
+                                <button class="btn upvote-btn" id=<%=list_message[i].id %>>
+                                   Upvote
                                 </button>
-                                <p id="like-number">4</p>
+                                <p id="upvote-number-<%=list_message[i].id %>"><%=list_message[i].likes%></p>
                             </div>
 
                         </div>
@@ -46,6 +46,7 @@
                 <%}%>
             </div>
         </main>
+        <script src="/javascripts/upvote.js"></script>
         <%- include("./partials/footer") %>
     </body>
 </html>
