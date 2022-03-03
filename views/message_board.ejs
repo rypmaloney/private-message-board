@@ -7,7 +7,7 @@
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
             <div class="messages">
-                <h1><%= title %></h1>
+                <h2><%= title %></h2>
                 <% if(!currentUser) { %>
                 <p>This board has restricted access</p>
                 <p>
@@ -15,39 +15,32 @@
                     message board.
                 </p>
                 <% } else{%>
-                    
+                    <!-- For each message, make a post -->
                     <% for(var i=0; i<list_message.length; i++) {%>
                         <div class="message">
+                            <!-- MESSAGE DETAILS -->
                             <div class="message-content">
-                                <h3> <%= list_message[i].title %></h3>
+                                <h3><a href="<%= list_message[i].url%>"> <%= list_message[i].title %> </a></h3>
                                 
                                 <p> <%= list_message[i].body_text %></p>
                                 <p><em> Posted by <%= list_message[i].user.username %>  </em></p>
-                                <p><a href="<%= list_message[i].url%>">More info</a></p>
+                                <p><a href="<%= list_message[i].url%>">View comments...</a></p>
                             </div>
+                            <!-- UPVOTER -->
                             <div class="vote-content">
                                 <div>
                                     <button class="upvote-btn" id=<%=list_message[i].id %>></button>
                                 </div>
                                 
                                 <p id="upvote-number-<%=list_message[i].id %>"><%=list_message[i].likes%></p>
-                                <p><strong>Upvotes</strong></p>
+
                             </div>
+
                         </div>
                             
                 <% } %>
 
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
-
-                <%}%>
+            <%}%>
             </div>
         </main>
         <script src="/javascripts/upvote.js"></script>

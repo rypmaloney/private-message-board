@@ -4,9 +4,16 @@
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
-    <div class="profle-image">
-        <% if(currentUser){ %>
-        <p>Current user: <%=currentUser.username %></p>
-        <% }%>
+    <h1>Private Forum</h1>
+
+    <div class="user">
+        <p><% if(currentUser){ %></p>
+        <p>Logged in as <%=currentUser.username %></p>
+        <form method="POST" action="/log-out/">
+            <button class="btn btn-primary" type="submit">logout</button>
+        </form>
+        <% }else{%>
+        <p><a href="/log-in/">Please log in</a></p>
+        <%}%>
     </div>
 </header>

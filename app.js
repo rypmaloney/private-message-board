@@ -33,10 +33,12 @@ mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
+//Morgan middleware. Logs to console requests.
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+//Sets up public files to be available to front end
 app.use(express.static(path.join(__dirname, "public")));
 
 //Set up local strategy
@@ -63,8 +65,13 @@ passport.deserializeUser((id, done) =>
     User.findById(id, (err, user) => done(err, user))
 );
 
-// Secret value should be a process env value
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));

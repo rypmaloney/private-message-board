@@ -15,7 +15,7 @@
                 </p>
                 <% } else{%>
                      <div class="message-detail">
-                        <h1><%= title %></h1>
+                        <h2><%= title %></h2>
                         <p><%= message.body_text %></p>
 
                         <p>
@@ -44,7 +44,7 @@
 
                 <!--  -->
 
-
+                </div>  
                 <div class="comment-form">
                     <h3>New Comment</h3>
                     <form action="" method="POST">
@@ -62,7 +62,7 @@
                         <li class="error"><%= errors[i].msg %></li>
                         <%console.log(errors)%> <%}}%>
                     </ul>
-                </div>
+                
                 </div>
             </div>
             <p>Welcome to <%= title %></p>

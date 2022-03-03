@@ -133,7 +133,7 @@ table {
 
 /* Standard Classes */
 a {
-    color: #966305;
+    color: #db8f00;
     text-decoration: none;
 }
 
@@ -153,6 +153,7 @@ h2 {
 }
 
 h3 {
+    color: #af7406;
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 500;
     font-size: 1em;
@@ -166,6 +167,7 @@ p {
     font-weight: 300;
     font-size: 0.9em;
     padding: 0.3em;
+    line-height: 1.2em;
 }
 
 em {
@@ -178,19 +180,18 @@ body {
         "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     position: relative;
-    font-size: 1.3em;
+    font-size: 1.2em;
     z-index: 0;
-    background-color: rgb(252, 248, 248);
-    color: rgb(20, 20, 20);
+    background-color: rgb(32, 30, 49);
+    color: rgb(202, 206, 209);
 }
 
 header {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     color: whitesmoke;
-    height: 1.5em;
-    background-color: #063985f6;
+    background-color: rgb(32, 30, 49);
     border-bottom: 2px solid #966305;
 }
 
@@ -204,11 +205,11 @@ main {
 }
 
 /* Profile */
-#profile {
-    position: fixed;
-    top: 1.7em;
-    right: 1em;
-    background-color: rgba(230, 224, 224, 0.438);
+.user {
+    margin: 0.3em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* Side Menu */
@@ -225,17 +226,6 @@ main {
     padding: 0.7em;
 }
 
-.side-menu-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: serif;
-    font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
-        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-size: 1.2em;
-    font-weight: 300;
-    padding-left: 0;
-}
 .side-menu-btn:focus {
     outline: none;
 }
@@ -248,14 +238,13 @@ main {
     cursor: pointer;
 }
 #side-menu ul li:hover {
-    background-color: burlywood;
+    background-color: rgb(18, 18, 39);
 }
 
 /* HEADER */
 .bar {
-    width: 20px;
-    height: 2px;
-    background-color: black;
+    width: 30px;
+    height: 3px;
     margin: 5px 0;
     background-color: whitesmoke;
 }
@@ -271,7 +260,7 @@ main {
     flex-direction: column;
     justify-content: center;
     max-width: 50em;
-    margin: 2em auto 4em 12em;
+    margin: 2em auto 4em 13em;
 }
 
 .message-detail {
@@ -284,51 +273,43 @@ main {
     display: flex;
     flex-direction: row;
     max-width: 40em;
-    padding: 1em;
+    margin: 0.5em;
 }
 
 .comment {
-    border: 1px solid #1f4f9791;
-    box-shadow: 5px 15px 30px gainsboro;
+    border: 1px solid #998348;
+    box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
+    background-color: rgb(44, 41, 65);
     margin: 0.3em;
 }
 
 .message-content {
-    border: 1px solid #1f4f9791;
-    box-shadow: 5px 15px 30px gainsboro;
+    border: 1px solid #998348;
     padding: 1em;
-    min-width: 80%;
+    min-width: 88%;
+    box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
+    background-color: rgb(37, 34, 59);
 }
 
 .vote-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.vote-content {
     text-align: center;
-    border: 1px solid #1f4f973a;
-    box-shadow: 3px 5px 10px gainsboro;
+    padding: 0.8em;
 }
 
 .upvote-btn {
-    border: solid black;
+    border: solid rgba(185, 185, 185, 0.61);
     background-color: transparent;
     border-width: 0 4px 4px 0;
     display: inline-block;
-    padding: 8px;
+    padding: 10px;
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
     cursor: pointer;
 }
 
-.upvote-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 1em;
-}
 .upvote-info p {
     font-size: 0.7em;
 }
@@ -336,18 +317,20 @@ main {
 /* Buttons */
 .btn {
     font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 500;
+    font-weight: 200;
     border: 1px solid rgb(126, 122, 119);
-    border-radius: 3px;
+    border-radius: 1px;
     cursor: pointer;
 }
 .btn-primary {
-    color: #291c05;
-    padding: 0.3em;
+    background-color: rgba(240, 248, 255, 0);
+    color: #f5b23f;
+    padding: 0.3em 0.5em;
 }
 
 .btn-primary:hover {
-    background-color: #f3b136;
+    background-color: #eebd61;
+    color: #291c05;
     color: black;
 }
 
@@ -369,12 +352,18 @@ main {
 }
 
 /* Forms */
+
 .form {
+    max-width: 12em;
+}
+.form,
+.message-form,
+.comment-form {
     padding: 1em;
     margin: 1em;
-    background-color: rgba(250, 248, 248, 0.918);
-    box-shadow: 5px 15px 30px rgb(212, 208, 208);
-    max-width: 12em;
+    border: 1px solid #998348;
+    box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
+    background-color: rgb(37, 34, 59);
 }
 
 .form h2,
@@ -408,34 +397,30 @@ textarea {
     border-radius: 5px;
     width: 15em;
     margin-bottom: 1em;
-
-    border: 1px solid whitesmoke;
-    box-shadow: 1px 1px 1px rgb(212, 208, 208);
+    background-color: rgb(49, 49, 80);
+    border: 1px solid #998348;
+    box-shadow: 1px 2px 3px rgb(28, 27, 32);
+    color: white;
 }
 
-.message-form {
-    padding: 1em;
-    margin: 1em;
-    background-color: rgba(250, 248, 248, 0.918);
-    box-shadow: 5px 15px 30px rgb(212, 208, 208);
+.message-form,
+.comment-form {
     width: 53%;
     max-width: 40em;
 }
 .message-form input[type="text"] {
     width: 60%;
 }
-.message-form textarea {
+.message-form textarea,
+.comment-form textarea {
     width: 95%;
     font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
         "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .comment-form {
-    margin: 4em 1em;
+    margin: 1em;
     padding: 0.5em;
-
-    background-color: rgba(250, 248, 248, 0.918);
-    box-shadow: 5px 15px 30px rgb(212, 208, 208);
 }
 .comment-form textarea {
     width: 95%;
@@ -463,6 +448,10 @@ textarea {
         justify-content: space-between;
     }
 
+    header h1 {
+        display: none;
+    }
+
     /* hide menu */
     #side-menu ul li {
         width: 10em;
@@ -472,8 +461,7 @@ textarea {
         top: 2em;
         left: 1em;
         width: 0;
-        background-color: rgba(235, 235, 235, 0.918);
-        box-shadow: 5px 15px 30px gainsboro;
+        background-color: rgba(37, 33, 48, 0.89);
     }
 
     .open {
@@ -488,5 +476,10 @@ textarea {
     }
     .message {
         flex-direction: column;
+    }
+
+    .vote-content {
+        border-bottom: 1px solid rgb(199, 170, 6);
+        margin-bottom: 2em;
     }
 }
