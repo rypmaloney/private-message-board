@@ -343,6 +343,7 @@ main {
     padding: 12px;
     border: solid rgb(56, 221, 78);
     border-width: 0 4px 4px 0;
+    margin-bottom: 10px;
 }
 
 .upvoted {

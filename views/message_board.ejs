@@ -5,7 +5,7 @@
     </head>
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
-        <main>
+        <main id="main">
             <div class="messages">
                 <h2><%= title %></h2>
                 <% if(!currentUser) { %>
@@ -23,7 +23,7 @@
                                 <h3><a href="<%= list_message[i].url%>"> <%= list_message[i].title %> </a></h3>
                                 
                                 <p> <%= list_message[i].body_text %></p>
-                                <p><em> Posted by <%= list_message[i].user.username %>  </em></p>
+                                <p><em> Posted by<a href="/board/message/user/<%=list_message[i].user.id%>"> <%= list_message[i].user.username %> </a> </em></p>
                                 <p><a href="<%= list_message[i].url%>">View comments...</a></p>
                             </div>
                             <!-- UPVOTER -->

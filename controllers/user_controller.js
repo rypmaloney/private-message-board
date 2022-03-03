@@ -12,8 +12,8 @@ let Message = require("../models/Message");
 //POST function for creating a new user- hashes password then saves user
 exports.create_user = [
     // Validate and sanitize fields.
-    body("username", "Username must not be empty.")
-        .isLength({ min: 1 })
+    body("username", "Username must be at list 6 characters long.")
+        .isLength({ min: 6 })
         .escape(),
     body("password", "Password must not be empty.")
         .isLength({ min: 1 })

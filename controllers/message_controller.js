@@ -19,7 +19,6 @@ exports.message_list = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-
             //Successful, so render
             res.render("message_board", {
                 title: "Private Forum",
@@ -28,7 +27,6 @@ exports.message_list = function (req, res, next) {
         });
 };
 
-/////////////////////////////
 //GET Function for all comments for a given post
 exports.comment_list = function (req, res, next) {
     async.parallel(
@@ -62,7 +60,6 @@ exports.comment_list = function (req, res, next) {
         }
     );
 };
-///////////////////////////////
 
 //POST Function for new message
 exports.message_create_post = [
@@ -106,6 +103,7 @@ exports.message_create_post = [
         }
     },
 ];
+
 //POST function to create specific comment
 exports.comment_create_post = [
     // Validate and sanitize fields.
@@ -171,8 +169,8 @@ exports.message_detail = function (req, res, next) {
         });
 };
 
-//GET function for all messsages by a given user
-exports.user_list = function (req, res, next) {
+//GET function for all messsages by the current user
+exports.current_user_list = function (req, res, next) {
     Message.find({ user: req.user }, "title body_text user likes")
         .sort({ likes: -1 })
         .populate("user")
@@ -183,12 +181,31 @@ exports.user_list = function (req, res, next) {
             let user = req.user;
             //Successful, so render
             res.render("message_board", {
-                title: `Posts by ${user.username}`,
+                title: `Posts by You`,
                 list_message: message_list,
             });
         });
 };
 
+//GET function for all messsages by a given  user
+exports.user_list = function (req, res, next) {
+    Message.find({ user: req.params.id }, "title body_text user likes")
+        .sort({ likes: -1 })
+        .populate("user")
+        .exec(function (err, message_list) {
+            if (err) {
+                return next(err);
+            }
+            let user = req.params.id;
+            //Successful, so render
+            res.render("message_board", {
+                title: `Posts by ${user}`,
+                list_message: message_list,
+            });
+        });
+};
+
+//Increment like for a given post. This is called on the front end through AJAX.
 exports.like_increment = function (req, res, next) {
     Message.updateOne(
         { _id: req.params.id },

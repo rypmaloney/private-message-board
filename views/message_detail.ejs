@@ -20,7 +20,7 @@
 
                         <p>
                             <em>
-                                Posted by <%= message.user.username %> on <%=
+                                Posted by <a href="/board/message/user/<%=message.user.id%>"><%= message.user.username %> </a>on <%=
                                 message.prettyDate %>
                             </em>
                         </p>
@@ -40,7 +40,7 @@
                         <% } %>
                         
                     <% } %>
-                <% } %>
+                
 
                 <!--  -->
 
@@ -66,6 +66,7 @@
                 </div>
             </div>
             <p>Welcome to <%= title %></p>
+            <% } %>
         </main>
         <%- include("./partials/footer") %>
     </body>

@@ -14,8 +14,9 @@ router.get("/message/new/", function (req, res, next) {
 
 router.post("/message/like/:id", message_controller.like_increment);
 
-//Get specific message
-router.get("/message/user/", message_controller.user_list);
+router.get("/message/user/:id", message_controller.user_list);
+
+router.get("/message/user/", message_controller.current_user_list);
 
 //Get specific message
 router.get("/message/:id/", message_controller.comment_list);

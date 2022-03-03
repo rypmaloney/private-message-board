@@ -13,6 +13,12 @@
                     Create an account in order to sign up and see messages in
                     this forum.
                 </p>
+                <ul>
+                    <% if(errors) { %> <% for (var i = 0; i < errors.length;
+                    i++) { %>
+                    <li class="error"><%= errors[i].msg %></li>
+                    <%console.log(errors)%> <%}}%>
+                </ul>
                 <form action="" method="POST">
                     <label for="username">Username:</label>
                     <br />
@@ -30,12 +36,6 @@
                         Submit
                     </button>
                 </form>
-                <ul>
-                    <% if(errors) { %> <% for (var i = 0; i < errors.length;
-                    i++) { %>
-                    <li class="error"><%= errors[i].msg %></li>
-                    <%console.log(errors)%> <%}}%>
-                </ul>
             </div>
         </main>
         <%- include("./partials/footer") %>
