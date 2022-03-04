@@ -1,18 +1,17 @@
 function menuController() {
     //Close menu when clicking away from it
-    // (function () {
-    //     window.addEventListener("mouseover", clickAway);
-    //     function clickAway(e) {
-    //         if (e.target.matches(".main")) {
-    //             let dropdown = document.getElementsByClassName("menu-item");
-    //             for (let i = 0; i < dropdown.length; i++) {
-    //                 if (dropdown[i].classList.contains("showMobile")) {
-    //                     dropdown[i].classList.remove("showMobile");
-    //                 }
-    //             }
-    //         }
-    //     }
-    // })();
+    const setWindowRemover = () => {
+        window.addEventListener("mouseover", clickAway);
+        function clickAway(e) {
+            if (
+                !e.target.matches(".side-menu") ||
+                !e.target.matches("#menu-opener")
+            ) {
+                let menuItem = document.getElementById("side-menu");
+                menuItem.classList.remove("open");
+            }
+        }
+    };
 
     //Mobile menu expand
     (function () {
@@ -21,10 +20,9 @@ function menuController() {
         function expandMenu() {
             let menuItem = document.getElementById("side-menu");
             menuItem.classList.toggle("open");
+            setWindowRemover();
         }
     })();
-
-    console.log("working");
 }
 
 menuController();

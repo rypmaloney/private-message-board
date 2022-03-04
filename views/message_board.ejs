@@ -5,57 +5,48 @@
     </head>
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
-        <main>
-            <h1><%= title %></h1>
-
+        <main id="main">
             <div class="messages">
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message. The body of a message.
-                        The body of a message. The body of a message.The body of
-                        a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A message title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a message.The body of a message.The body of a
-                        message.The body of a message.The body of a message.The
-                        body of a message.
-                    </p>
-                </div>
+                <h2><%= title %></h2>
+                <% if(!currentUser) { %>
+                <p>This board has restricted access</p>
+                <p>
+                    Please <a href="/log-in/">log in</a> to view and post on the
+                    message board.
+                </p>
+                <% } else{%>
+                    <% if(list_message) { %>
+                    <!-- For each message, make a post -->
+                    <% for(var i=0; i<list_message.length; i++) {%>
+                        <div class="message">
+                            <!-- MESSAGE DETAILS -->
+                            <div class="message-content">
+                                <h3><a href="<%= list_message[i].url%>"> <%= list_message[i].title %> </a></h3>
+                                
+                                <p> <%= list_message[i].body_text %></p>
+                                <p><em> Posted by<a href="/board/message/user/<%=list_message[i].user.id%>"> <%= list_message[i].user.username %> </a> on <%=list_message[i].prettyDate %>
+                                 </em></p>
+                                <p><a href="<%= list_message[i].url%>">View comments...</a></p>
+                            </div>
+                            <!-- UPVOTER -->
+                            <div class="vote-content">
+                                <div>
+                                    <button class="upvote-btn" id=<%=list_message[i].id %>></button>
+                                </div>
+                                
+                                <p id="upvote-number-<%=list_message[i].id %>"><%=list_message[i].likes%></p>
+
+                            </div>
+
+                        </div>
+                        <% } %>
+                            
+                <% } %>
+
+            <%}%>
             </div>
         </main>
+        <script src="/javascripts/upvote.js"></script>
         <%- include("./partials/footer") %>
     </body>
 </html>

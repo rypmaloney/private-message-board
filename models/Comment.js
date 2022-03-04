@@ -1,13 +1,16 @@
 let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-const Comment = mongoose.model(
-    "Message",
-    new Schema({
-        body_text: { type: String, required: true },
-        parent: { type: Schema.Types.ObjectId, ref: "Message", required: true },
-        user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-        likes: { type: Number, required: false },
-    })
-);
+let commentSchema = new Schema({
+    parent: { type: Schema.Types.ObjectId, ref: "Message", required: true },
+    body_text: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    date: { type: Date, required: true },
+    likes: { type: Number, required: false },
+});
 
-module.exports = Comment;
+commentSchema.virtual("prettyDate").get(function () {
+    return this.date.toDateString();
+});
+
+module.exports = mongoose.model("Comment", commentSchema);

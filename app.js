@@ -4,8 +4,17 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+//models
+let User = require("./models/User");
+
 var mongoose = require("mongoose");
 require("dotenv").config();
+
+//authenitcation packages
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcryptjs = require("bcryptjs");
 
 //define routers
 var indexRouter = require("./routes/index");
@@ -24,11 +33,54 @@ mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
+//Morgan middleware. Logs to console requests.
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+//Sets up public files to be available to front end
 app.use(express.static(path.join(__dirname, "public")));
+
+//Set up local strategy
+passport.use(
+    new LocalStrategy((username, password, done) => {
+        User.findOne({ username: username }, (err, user) => {
+            if (err) return done(err);
+            if (!user)
+                return done(null, false, { message: "Incorrect username" });
+            bcryptjs.compare(password, user.password, (err, res) => {
+                if (err) return done(err);
+                // Passwords match, log user in!
+                if (res) return done(null, user);
+                // Passwords do not match!
+                else
+                    return done(null, false, { message: "Incorrect password" });
+            });
+        });
+    })
+);
+
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser((id, done) =>
+    User.findById(id, (err, user) => done(err, user))
+);
+
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
+
+// Access the user object from anywhere in our application
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 //Use previously defined routers
 app.use("/", indexRouter);

@@ -7,9 +7,16 @@
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
             <h1><%= title %></h1>
+            <% if(currentUser){ %>
+            <h2>Welcome <%=currentUser.username %></h2>
+            <p>You're logged in, so feel free to checkout the message board.</p>
 
-            <p>This is a paragraph</p>
-            <p>Welcome to <%= title %></p>
+            <% }else{%>
+            <p>
+                Please <a href="/log-in/">log in</a> to view and post on the
+                message board.
+            </p>
+            <%}%>
         </main>
         <%- include("./partials/footer") %>
     </body>

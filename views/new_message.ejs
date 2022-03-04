@@ -5,27 +5,34 @@
     </head>
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
-        <main>
+        <main id="main">
             <div class="message-form">
                 <h1><%= title %></h1>
 
-                <p>
-                    Create an account in order to sign up and see messages in
-                    this forum.
+                <p style="text-align: start;": left">
+                    This post will appear on the main forum and in "My
+                    Messages."
                 </p>
                 <form action="" method="POST">
                     <label for="title">Title:</label>
                     <br />
                     <input type="text" name="title" />
                     <br />
-                    <label for="password">Body:</label>
+                    <label for="body">Body:</label>
                     <br />
-                    <textarea col="200" rows="10" name="message"></textarea>
+                    <textarea col="300" rows="10" name="body"></textarea>
 
                     <button class="btn btn-primary" type="submit">
                         Submit
                     </button>
                 </form>
+                
+                <ul>
+                    <% if(errors) { %> <% for (var i = 0; i < errors.length;
+                    i++) { %>
+                    <li class="error"><%= errors[i].msg %></li>
+                    <%console.log(errors)%> <%}}%>
+                </ul>
             </div>
         </main>
         <%- include("./partials/footer") %>

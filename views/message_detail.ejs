@@ -6,49 +6,68 @@
     <body>
         <%- include("./partials/header") %> <%- include("./partials/menu") %>
         <main>
-            <h1><%= title %></h1>
+                <!--  -->
+                <% if(!currentUser) { %>
+                <p>This post has restricted access</p>
+                <p>
+                    Please <a href="/log-in/">log in</a> to view and post on the
+                    message board.
+                </p>
+                <% } else{%>
+                     <div class="message-detail">
+                        <h2><%= title %></h2>
+                        <p><%= message.body_text %></p>
 
-            <p>
-                The body of a message. The body of a message.The body of a
-                message.The body of a message. The body of a message. The body
-                of a message. The body of a message.The body of a message.
-            </p>
-            <div class="messages">
-                <h2>Comments</h2>
-                <div class="comment">
-                    <h3>A coment title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        a f a message. The body of a message. The body of a
-                        message. The body of a message.The body of a message.
-                    </p>
-                </div>
-                <div class="message">
-                    <h3>A comment title</h3>
-                    <p>
-                        The body of a message. The body of a message.The body of
-                        essage.The body of a message.The body of a message.
-                    </p>
-                </div>
+                        <p>
+                            <em>
+                                Posted by <a href="/board/message/user/<%=message.user.id%>"><%= message.user.username %> </a>on <%=
+                                message.prettyDate %>
+                            </em>
+                        </p>
+                     </div>
+                     <% if(comment_list==null) { %>
+                        <p>There are no comments. Start the conversation.</p>
+                     <% } else{%>
+                       
+                    <div class="messages">
+                         <h3>Comments:</h3>
+                    <% for(var i=0; i<comment_list.length; i++) {%>
+                        <div class="comment">
+                            
+                            <p> <%= comment_list[i].body_text %></p> 
+                            <p><em> Posted by<a href="/board/message/user/<%=comment_list[i].user.id%>"> <%= comment_list[i].user.username %> </a> </em></p> 
 
+                        </div>
+                        <% } %>
+                        
+                    <% } %>
+                
+
+                <!--  -->
+
+                </div>  
                 <div class="comment-form">
                     <h3>New Comment</h3>
                     <form action="" method="POST">
-                        <label for="title">Title:</label>
+                        <label for="comment">Comment:</label>
                         <br />
-                        <input type="text" name="title" />
-                        <br />
-                        <label for="password">Body:</label>
-                        <br />
-                        <textarea col="200" rows="10" name="message"></textarea>
+                        <textarea col="200" rows="10" name="comment"></textarea>
 
                         <button class="btn btn-primary" type="submit">
                             Submit
                         </button>
                     </form>
+                    <ul>
+                        <% if(errors) { %> <% for (var i = 0; i < errors.length;
+                        i++) { %>
+                        <li class="error"><%= errors[i].msg %></li>
+                        <%console.log(errors)%> <%}}%>
+                    </ul>
+                
                 </div>
             </div>
             <p>Welcome to <%= title %></p>
+            <% } %>
         </main>
         <%- include("./partials/footer") %>
     </body>
