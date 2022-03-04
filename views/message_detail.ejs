@@ -28,13 +28,14 @@
                      <% if(comment_list==null) { %>
                         <p>There are no comments. Start the conversation.</p>
                      <% } else{%>
+                       
                     <div class="messages">
+                         <h3>Comments:</h3>
                     <% for(var i=0; i<comment_list.length; i++) {%>
                         <div class="comment">
                             
-                            <p> <%= comment_list[i].body_text %></p>
-                            <p><em> Posted by <%= comment_list[i].user.username %>  </em></p>
-
+                            <p> <%= comment_list[i].body_text %></p> 
+                            <p><em> Posted by<a href="/board/message/user/<%=comment_list[i].user.id%>"> <%= comment_list[i].user.username %> </a> </em></p> 
 
                         </div>
                         <% } %>

@@ -15,6 +15,7 @@
                     message board.
                 </p>
                 <% } else{%>
+                    <% if(list_message) { %>
                     <!-- For each message, make a post -->
                     <% for(var i=0; i<list_message.length; i++) {%>
                         <div class="message">
@@ -23,7 +24,8 @@
                                 <h3><a href="<%= list_message[i].url%>"> <%= list_message[i].title %> </a></h3>
                                 
                                 <p> <%= list_message[i].body_text %></p>
-                                <p><em> Posted by<a href="/board/message/user/<%=list_message[i].user.id%>"> <%= list_message[i].user.username %> </a> </em></p>
+                                <p><em> Posted by<a href="/board/message/user/<%=list_message[i].user.id%>"> <%= list_message[i].user.username %> </a> on <%=list_message[i].prettyDate %>
+                                 </em></p>
                                 <p><a href="<%= list_message[i].url%>">View comments...</a></p>
                             </div>
                             <!-- UPVOTER -->
@@ -37,6 +39,7 @@
                             </div>
 
                         </div>
+                        <% } %>
                             
                 <% } %>
 

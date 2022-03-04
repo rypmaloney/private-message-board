@@ -12,7 +12,7 @@ const { isValidObjectId } = require("mongoose");
 
 //GET Function for all messages
 exports.message_list = function (req, res, next) {
-    Message.find({}, "title body_text user _id likes")
+    Message.find({}, "title body_text user _id likes date")
         .sort({ likes: -1 })
         .populate("user")
         .exec(function (err, message_list) {
@@ -21,7 +21,7 @@ exports.message_list = function (req, res, next) {
             }
             //Successful, so render
             res.render("message_board", {
-                title: "Private Forum",
+                title: "Message Board",
                 list_message: message_list,
             });
         });
@@ -189,20 +189,35 @@ exports.current_user_list = function (req, res, next) {
 
 //GET function for all messsages by a given  user
 exports.user_list = function (req, res, next) {
-    Message.find({ user: req.params.id }, "title body_text user likes")
-        .sort({ likes: -1 })
-        .populate("user")
-        .exec(function (err, message_list) {
+    async.parallel(
+        {
+            messages: function (callback) {
+                Message.find({ user: req.params.id })
+                    .sort({ likes: -1 })
+                    .populate("user")
+                    .exec(callback);
+            },
+            user: function (callback) {
+                User.findById(req.params.id).exec(callback);
+            },
+        },
+        function (err, results) {
             if (err) {
                 return next(err);
             }
-            let user = req.params.id;
-            //Successful, so render
+            if (results.messages == null) {
+                // No results.
+
+                var err = new Error("There are no posts by this user");
+                err.status = 404;
+                return next(err);
+            }
             res.render("message_board", {
-                title: `Posts by ${user}`,
-                list_message: message_list,
+                title: `Posts by ${results.user.username}`,
+                list_message: results.messages,
             });
-        });
+        }
+    );
 };
 
 //Increment like for a given post. This is called on the front end through AJAX.
