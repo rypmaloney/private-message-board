@@ -28,6 +28,9 @@ var app = express();
 
 app.use(helmet());
 
+//Sets up public files to be available to front end
+app.use(express.static(path.join(__dirname, "public")));
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -84,8 +87,6 @@ app.use((req, res, next) => {
 });
 
 app.use(compression()); //Compress all routes
-//Sets up public files to be available to front end
-app.use(express.static(path.join(__dirname, "public")));
 
 //Use previously defined routers
 app.use("/", indexRouter);
