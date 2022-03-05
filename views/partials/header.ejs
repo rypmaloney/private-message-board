@@ -1,19 +1,20 @@
 <header>
-    <div id="menu-opener">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-    <h1>Private Forum</h1>
+  <div id="menu-opener">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <h1>Private Forum</h1>
 
-    <div class="user">
-        <p><% if(currentUser){ %></p>
-        <p>Logged in as <%=currentUser.username %></p>
-        <form method="POST" action="/log-out/">
-            <button class="btn btn-primary" type="submit">logout</button>
-        </form>
-        <% }else{%>
-        <p><a href="/log-in/">Please log in</a></p>
-        <%}%>
-    </div>
+  <div class="user">
+    <% if(!currentUser){%>
+    <p><a href="/log-in/">Please log in</a></p>
+
+    <% }else{%>
+    <p>Logged in as <%=currentUser.username %></p>
+    <form method="POST" action="/log-out/">
+      <button class="btn btn-primary" type="submit">logout</button>
+    </form>
+    <%}%>
+  </div>
 </header>
