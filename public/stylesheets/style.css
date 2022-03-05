@@ -85,12 +85,12 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -104,387 +104,398 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: "";
-    content: none;
+  content: "";
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* /CSS RESET */
 
 /* Standard Classes */
 a {
-    color: #db8f00;
-    text-decoration: none;
+  color: #db8f00;
+  text-decoration: none;
 }
 
 h1 {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 500;
-    font-size: 2em;
-    padding: 0.3em;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 2em;
+  padding: 0.3em;
 }
 
 h2 {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 500;
-    font-size: 1.3em;
-    padding: 0.3em;
-    margin: auto;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1.3em;
+  padding: 0.3em;
+  margin: auto;
 }
 
 h3 {
-    color: #af7406;
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 500;
-    font-size: 1em;
-    padding: 0.3em;
-    margin: auto;
+  color: #af7406;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  padding: 0.3em;
+  margin: auto;
 }
 
 p {
-    font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
-        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    font-size: 0.9em;
-    padding: 0.3em;
-    line-height: 1.2em;
+  font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 0.9em;
+  padding: 0.3em;
+  line-height: 1.2em;
 }
 
 em {
-    font-style: italic;
+  font-style: italic;
 }
 
 /* Document Sections */
 body {
-    font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
-        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    position: relative;
-    font-size: 1.2em;
-    z-index: 0;
-    background-color: rgb(32, 30, 49);
-    color: rgb(202, 206, 209);
+  font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  position: relative;
+  font-size: 1.2em;
+  z-index: 0;
+  background-color: rgb(32, 30, 49);
+  color: rgb(202, 206, 209);
 }
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    color: whitesmoke;
-    background-color: rgb(32, 30, 49);
-    border-bottom: 2px solid #966305;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: whitesmoke;
+  background-color: rgb(32, 30, 49);
+  border-bottom: 2px solid #966305;
 }
 
 main {
-    /* height: 110vh; */
-    padding: 2em 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  /* height: 110vh; */
+  padding: 2em 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Profile */
 .user {
-    margin: 0.3em 0.7em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  margin: 0.3em 0.7em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* Side Menu */
 #side-menu {
-    position: fixed;
-    z-index: 1;
-    top: 5em;
-    left: 2em;
-    overflow-x: hidden;
+  position: fixed;
+  z-index: 1;
+  top: 5em;
+  left: 2em;
+  overflow-x: hidden;
 }
 
 #side-menu ul li {
-    width: 7.5em;
-    padding: 0.7em;
+  width: 7.5em;
+  padding: 0.7em;
 }
 
 .side-menu-btn:focus {
-    outline: none;
+  outline: none;
 }
 .side-menu-btn:active {
-    color: red;
+  color: red;
 }
 
 #side-menu ul a {
-    width: 10em;
-    cursor: pointer;
+  width: 10em;
+  cursor: pointer;
 }
 #side-menu ul li:hover {
-    background-color: rgb(18, 18, 39);
+  background-color: rgb(18, 18, 39);
 }
 
 /* HEADER */
 .bar {
-    width: 30px;
-    height: 3px;
-    margin: 5px 0;
-    background-color: whitesmoke;
+  width: 30px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: whitesmoke;
 }
 
 #menu-opener {
-    display: none;
-    padding: 0.2em 1.2em;
+  display: none;
+  padding: 0.2em 1.2em;
 }
 
 /* Messages */
 .messages {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 50em;
-    margin: 2em auto 4em 13em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50em;
+  align-items: center;
+  margin-left: 8.5em;
+}
+
+.message-detail-container {
+  margin: 1em auto 0.3em;
 }
 
 .message-detail {
-    max-width: 40em;
-    margin: 1em auto 0.3em 12em;
+  margin: auto;
+  max-width: 40em;
 }
 
 .message,
 .comment {
-    display: flex;
-    max-width: 40em;
-    margin: 0.5em;
+  display: flex;
+  max-width: 40em;
+  margin: 0.5em;
 }
 
 .message {
-    flex-direction: row;
+  flex-direction: row;
+  margin-right: auto;
 }
 .comment {
-    border: 1px solid #998348;
-    box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
-    background-color: rgb(44, 41, 65);
-    margin: 0.3em;
-    padding: 0.5em;
-    flex-direction: column;
+  border: 1px solid #998348;
+  box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
+  background-color: rgb(44, 41, 65);
+  margin: 0.3em;
+  padding: 0.5em;
+  flex-direction: column;
+  width: 100%;
 }
 
 .message-content {
-    border: 1px solid #998348;
-    padding: 1em;
-    min-width: 88%;
-    box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
-    background-color: rgb(37, 34, 59);
+  border: 1px solid #998348;
+  padding: 1em;
+  min-width: 88%;
+  box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
+  background-color: rgb(37, 34, 59);
 }
 
 .vote-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0.8em;
 }
 
 .upvote-btn {
-    border: solid rgba(185, 185, 185, 0.61);
-    background-color: transparent;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-    cursor: pointer;
+  border: solid rgba(185, 185, 185, 0.61);
+  background-color: transparent;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 10px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  cursor: pointer;
 }
 
 .upvote-info p {
-    font-size: 0.7em;
+  font-size: 0.7em;
 }
 
 /* Buttons */
 .btn {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 200;
-    border: 1px solid rgb(126, 122, 119);
-    border-radius: 1px;
-    cursor: pointer;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 200;
+  border: 1px solid rgb(126, 122, 119);
+  border-radius: 1px;
+  cursor: pointer;
 }
 .btn-primary {
-    background-color: rgba(240, 248, 255, 0);
-    color: #f5b23f;
-    padding: 0.3em 0.5em;
+  background-color: rgba(240, 248, 255, 0);
+  color: #f5b23f;
+  padding: 0.3em 0.5em;
 }
 
 .btn-primary:hover {
-    background-color: #eebd61;
-    color: #291c05;
-    color: black;
+  background-color: #eebd61;
+  color: #291c05;
+  color: black;
 }
 
 .upvote-btn:hover {
-    border: solid rgb(56, 221, 78);
-    border-width: 0 4px 4px 0;
+  border: solid rgb(56, 221, 78);
+  border-width: 0 4px 4px 0;
 }
 
 .upvote-btn:active {
-    padding: 12px;
-    border: solid rgb(56, 221, 78);
-    border-width: 0 4px 4px 0;
-    margin-bottom: 10px;
+  padding: 12px;
+  border: solid rgb(56, 221, 78);
+  border-width: 0 4px 4px 0;
+  margin-bottom: 10px;
 }
 
 .upvoted {
-    background-color: rgb(39, 160, 49);
-    border: solid rgb(56, 221, 78);
-    border-width: 0 4px 4px 0;
+  background-color: rgb(39, 160, 49);
+  border: solid rgb(56, 221, 78);
+  border-width: 0 4px 4px 0;
 }
 
 /* Forms */
 
 .form {
-    max-width: 12em;
+  max-width: 12em;
 }
 .form,
 .message-form,
 .comment-form {
-    padding: 1em;
-    margin: 1em;
-    border: 1px solid #998348;
-    box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
-    background-color: rgb(37, 34, 59);
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #998348;
+  box-shadow: 5px 5px 10px rgba(40, 39, 75, 0.438);
+  background-color: rgb(37, 34, 59);
 }
 
 .form h2,
 .form p,
 .message-form h2,
 .message-form p {
-    text-align: center;
-    margin-bottom: 0.5em;
+  text-align: center;
+  margin-bottom: 0.5em;
 }
 form {
-    padding-left: 1em;
-    margin: auto;
+  padding-left: 1em;
+  margin: auto;
 }
 
 label {
-    padding: 0.5em;
-    font-size: 0.6em;
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 500;
-    margin: 5px auto;
+  padding: 0.5em;
+  font-size: 0.6em;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  margin: 5px auto;
 }
 input[type="text"],
 input[type="password"] {
-    height: 1.4em;
+  height: 1.4em;
 }
 
 input[type="text"],
 input[type="password"],
 textarea {
-    padding: 0.2em;
-    border-radius: 5px;
-    width: 15em;
-    margin-bottom: 1em;
-    background-color: rgb(49, 49, 80);
-    border: 1px solid #998348;
-    box-shadow: 1px 2px 3px rgb(28, 27, 32);
-    color: white;
+  padding: 0.2em;
+  border-radius: 5px;
+  width: 15em;
+  margin-bottom: 1em;
+  background-color: rgb(49, 49, 80);
+  border: 1px solid #998348;
+  box-shadow: 1px 2px 3px rgb(28, 27, 32);
+  color: white;
 }
 
 .message-form,
 .comment-form {
-    width: 53%;
-    max-width: 40em;
+  width: 53%;
+  max-width: 40em;
 }
 .message-form input[type="text"] {
-    width: 60%;
+  width: 60%;
 }
 .message-form textarea,
 .comment-form textarea {
-    width: 95%;
-    font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
-        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  width: 95%;
+  font-family: "Nunito Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .comment-form {
-    margin: 1em;
-    padding: 0.5em;
+  margin: 1em;
+  padding: 0.5em;
 }
 .comment-form textarea {
-    width: 95%;
+  width: 95%;
 }
 
 .comment-form h3 {
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }
 
 .error {
-    font-size: 0.7em;
-    color: red;
-    padding: 0.2em 1.3em;
+  font-size: 0.7em;
+  color: red;
+  padding: 0.2em 1.3em;
 }
 
 /*  */
 
 @media (max-width: 700px) {
-    /* fall behind menu on mobile */
-    main {
-        padding: 1.2em;
-    }
+  /* fall behind menu on mobile */
+  main {
+    padding: 1.2em;
+  }
 
-    header {
-        justify-content: space-between;
-    }
+  header {
+    justify-content: space-between;
+  }
 
-    header h1 {
-        display: none;
-    }
+  header h1 {
+    display: none;
+  }
 
-    /* hide menu */
-    #side-menu ul li {
-        width: 10em;
-        padding: 0.7em;
-    }
-    #side-menu {
-        top: 2em;
-        left: 1em;
-        width: 0;
-        background-color: rgba(37, 33, 48, 0.89);
-    }
+  /* hide menu */
+  #side-menu ul li {
+    width: 10em;
+    padding: 0.7em;
+  }
+  #side-menu {
+    top: 2em;
+    left: 1em;
+    width: 0;
+    background-color: rgba(37, 33, 48, 0.89);
+  }
 
-    .open {
-        width: auto !important;
-    }
-    #menu-opener {
-        display: block;
-    }
-    .messages,
-    .message-detail {
-        margin: auto;
-    }
-    .message {
-        flex-direction: column;
-    }
+  .open {
+    width: auto !important;
+  }
+  #menu-opener {
+    display: block;
+  }
+  .messages,
+  .message-detail {
+    margin: auto;
+  }
+  .message {
+    flex-direction: column;
+  }
 
-    .vote-content {
-        border-bottom: 1px solid rgb(199, 170, 6);
-        margin-bottom: 2em;
-    }
+  .vote-content {
+    border-bottom: 1px solid rgb(199, 170, 6);
+    margin-bottom: 2em;
+  }
+  .comment-form {
+    width: 100%;
+  }
 }

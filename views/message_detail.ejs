@@ -14,7 +14,8 @@
                     message board.
                 </p>
                 <% } else{%>
-                     <div class="message-detail">
+                     <div class="message-detail-container">
+                         <div class="message-detail">
                         <h2><%= title %></h2>
                         <p><%= message.body_text %></p>
 
@@ -24,6 +25,7 @@
                                 message.prettyDate %>
                             </em>
                         </p>
+                    </div>
                      </div>
                      <% if(comment_list==null) { %>
                         <p>There are no comments. Start the conversation.</p>
@@ -45,7 +47,7 @@
 
                 <!--  -->
 
-                </div>  
+                 
                 <div class="comment-form">
                     <h3>New Comment</h3>
                     <form action="" method="POST">
@@ -61,10 +63,12 @@
                         <% if(errors) { %> <% for (var i = 0; i < errors.length;
                         i++) { %>
                         <li class="error"><%= errors[i].msg %></li>
-                        <%console.log(errors)%> <%}}%>
+                         <%}}%>
                     </ul>
                 
                 </div>
+            </div> 
+
             </div>
             <p>Welcome to <%= title %></p>
             <% } %>
