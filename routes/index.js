@@ -6,7 +6,7 @@ let user_controller = require("../controllers/user_controller");
 router.get("/", function (req, res, next) {
   res.render("index", {
     title: "Private Forum",
-    // currentUser: req.user ? req.user : false,
+    currentUser: req.user,
   });
 });
 //GET log in page
