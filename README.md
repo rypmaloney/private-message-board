@@ -7,3 +7,5 @@ Features include:
 - Authentication with Passport (Hashing with bcryptjs)
 - Post, comment, and upvote on other posts (with AJAX)
 - Restricted access for logged out users
+
+[Live preview](https://private-forum.herokuapp.com/)

@@ -1,23 +1,26 @@
 //packages
-let createError = require("http-errors");
-let express = require("express");
-let path = require("path");
-let cookieParser = require("cookie-parser");
-let logger = require("morgan");
-let compression = require("compression");
-let helmet = require("helmet");
-
-//models
-let User = require("./models/User");
-
-let mongoose = require("mongoose");
-require("dotenv").config();
-
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const compression = require("compression");
+const helmet = require("helmet");
 //authenitcation packages
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcryptjs = require("bcryptjs");
+//models
+const User = require("./models/User");
+
+let mongoose = require("mongoose");
+require("dotenv").config();
+//MongoDB connection
+const mongoDb = `${process.env.DB_URI}`;
+mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "mongo connection error"));
 
 //define routers
 let indexRouter = require("./routes/index");
@@ -26,26 +29,18 @@ let boardRouter = require("./routes/board");
 
 var app = express();
 
-app.use(helmet());
-
-//Sets up public files to be available to front end
-app.use(express.static(path.join(__dirname, "public")));
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
-//MongoDB connection
-const mongoDb = `${process.env.DB_URI}`;
-mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "mongo connection error"));
 
 //Morgan middleware. Logs to console requests.
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(helmet());
+//Sets up public files to be available to front end
+app.use(express.static(path.join(__dirname, "public")));
 
 //Set up local strategy
 passport.use(

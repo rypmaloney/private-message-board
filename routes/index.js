@@ -11,6 +11,7 @@ router.get("/", function (req, res, next) {
 });
 //GET log in page
 router.get("/log-in/", function (req, res, next) {
+  if (res.locals.currentUser) return res.redirect("/");
   res.render("login_form", { title: "Log in " });
 });
 

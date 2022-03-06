@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <%- include("./partials/head") %>
-    </head>
-    <body>
-        <%- include("./partials/header") %> <%- include("./partials/menu") %>
-        <main>
-            <div class="form">
-                <h2><%= title %></h2>
+  <head>
+    <%- include("./partials/head") %>
+  </head>
+  <body>
+    <%- include("./partials/header") %> <%- include("./partials/menu") %>
+    <main>
+      <div class="form">
+        <h2><%= title %></h2>
 
-                <p>
-                    Create an account in order to sign up and see messages in
-                    this forum.
-                </p>
-                <ul>
-                    <% if(errors) { %> <% for (var i = 0; i < errors.length;
-                    i++) { %>
-                    <li class="error"><%= errors[i].msg %></li>
-                    <%console.log(errors)%> <%}}%>
-                </ul>
-                <form action="" method="POST">
-                    <label for="username">Username:</label>
-                    <br />
-                    <input type="text" name="username" />
-                    <br />
-                    <label for="password">Password:</label>
-                    <br />
-                    <input type="password" name="password" />
-                    <br />
-                    <label for="password-reenter">Reenter Password:</label>
-                    <br />
-                    <input type="password" name="password-reenter" />
-                    <br />
-                    <button class="btn btn-primary" type="submit">
-                        Submit
-                    </button>
-                </form>
-            </div>
-        </main>
-        <%- include("./partials/footer") %>
-    </body>
+        <p>
+          Create an account in order to sign up and see messages in this forum.
+        </p>
+        <ul>
+          <% if(errors) { %> <% for (var i = 0; i < errors.length; i++) { %>
+          <li class="error"><%= errors[i].msg %></li>
+          <%}}%>
+        </ul>
+        <form action="" method="POST">
+          <label for="username">Username:</label>
+          <br />
+          <input type="text" name="username" />
+          <br />
+          <label for="password">Password:</label>
+          <br />
+          <input type="password" name="password" />
+          <br />
+          <label for="password-reenter">Reenter Password:</label>
+          <br />
+          <input type="password" name="password-reenter" />
+          <br />
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+    <%- include("./partials/footer") %>
+  </body>
 </html>
