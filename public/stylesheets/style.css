@@ -256,7 +256,8 @@ main {
 }
 
 /* Messages */
-.messages {
+.messages,
+.message-detail-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -266,7 +267,6 @@ main {
 }
 
 .message-detail-container {
-  margin: 1em auto 0.3em;
 }
 
 .message-detail {
@@ -434,9 +434,7 @@ textarea {
 .comment-form {
   margin: 1em;
   padding: 0.5em;
-}
-.comment-form textarea {
-  width: 95%;
+  width: 40em;
 }
 
 .comment-form h3 {
@@ -484,6 +482,7 @@ textarea {
     display: block;
   }
   .messages,
+  .message-detail-container,
   .message-detail {
     margin: auto;
   }
